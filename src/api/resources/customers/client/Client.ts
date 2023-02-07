@@ -22,7 +22,7 @@ export class Client {
     /**
      * Create a new customer
      */
-    public async createCustomer(request: LagoApi.CustomerInput): Promise<LagoApi.Customer> {
+    public async create(request: LagoApi.CustomerInput): Promise<LagoApi.Customer> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "/customers"),
             method: "POST",
@@ -60,7 +60,7 @@ export class Client {
     /**
      * Return a single customer
      */
-    public async findCustomer(externalId: string): Promise<LagoApi.Customer> {
+    public async get(externalId: string): Promise<LagoApi.Customer> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.LagoApiEnvironment.Production,
@@ -100,9 +100,9 @@ export class Client {
     /**
      * Return a customer current usage
      */
-    public async findCustomerCurrentUsage(
+    public async getCurrentUsage(
         customerExternalId: string,
-        request: LagoApi.FindCustomerCurrentUsageRequest
+        request: LagoApi.FindCustomerCurrentUsageInput
     ): Promise<LagoApi.CustomerUsage> {
         const { externalSubscriptionId } = request;
         const _queryParams = new URLSearchParams();
@@ -147,7 +147,7 @@ export class Client {
     /**
      * Find all customers in certain organisation
      */
-    public async findAllCustomers(request: LagoApi.FindAllCustomersRequest = {}): Promise<LagoApi.Customers> {
+    public async find(request: LagoApi.FindAllCustomersInput = {}): Promise<LagoApi.Customers> {
         const { page, perPage } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {

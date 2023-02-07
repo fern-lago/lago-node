@@ -22,7 +22,6 @@ export * as subscriptions from "./subscriptions";
 export * from "./subscriptions/types";
 export * as wallets from "./wallets";
 export * from "./wallets/types";
-export * as webhooks from "./webhooks";
 export * from "./addOns/client/requests";
 export * from "./billableMetrics/client/requests";
 export * from "./coupons/client/requests";

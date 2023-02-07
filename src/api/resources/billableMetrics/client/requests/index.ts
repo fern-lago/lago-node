@@ -1,2 +1,2 @@
-export { FindAllBillableMetrics } from "./FindAllBillableMetrics";
-export { FindAllBillableMetricGroups } from "./FindAllBillableMetricGroups";
+export { FindAllBillableMetricsInput } from "./FindAllBillableMetricsInput";
+export { FindAllBillableMetricGroupsInput } from "./FindAllBillableMetricGroupsInput";

@@ -22,7 +22,7 @@ export class Client {
     /**
      * Assign a plan to a customer
      */
-    public async createSubscription(request: LagoApi.SubscriptionCreateInput): Promise<LagoApi.Subscription> {
+    public async create(request: LagoApi.SubscriptionCreateInput): Promise<LagoApi.Subscription> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "/subscriptions"),
             method: "POST",
@@ -60,10 +60,7 @@ export class Client {
     /**
      * Update an existing subscription by external ID
      */
-    public async updateSubscription(
-        externalId: string,
-        request: LagoApi.SubscriptionUpdateInput
-    ): Promise<LagoApi.Subscription> {
+    public async update(externalId: string, request: LagoApi.SubscriptionUpdateInput): Promise<LagoApi.Subscription> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.LagoApiEnvironment.Production,
@@ -104,7 +101,7 @@ export class Client {
     /**
      * Terminate a subscription
      */
-    public async destroySubscription(externalId: string): Promise<LagoApi.Subscription> {
+    public async delete(externalId: string): Promise<LagoApi.Subscription> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.LagoApiEnvironment.Production,
@@ -144,7 +141,7 @@ export class Client {
     /**
      * Find all suscriptions for certain customer
      */
-    public async findAllSubscriptions(request: LagoApi.FindAllSubscriptionsRequest): Promise<LagoApi.Subscriptions> {
+    public async find(request: LagoApi.FindAllSubscriptionsInput): Promise<LagoApi.Subscriptions> {
         const { page, perPage, externalCustomerId } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {

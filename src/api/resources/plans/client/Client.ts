@@ -22,7 +22,7 @@ export class Client {
     /**
      * Create a new plan
      */
-    public async createPlan(request: LagoApi.PlanInput): Promise<LagoApi.Plan> {
+    public async create(request: LagoApi.PlanInput): Promise<LagoApi.Plan> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "/plans"),
             method: "POST",
@@ -60,7 +60,7 @@ export class Client {
     /**
      * Return a single plan
      */
-    public async findPlan(code: string): Promise<LagoApi.Plan> {
+    public async get(code: string): Promise<LagoApi.Plan> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `/plans/${code}`),
             method: "GET",
@@ -97,7 +97,7 @@ export class Client {
     /**
      * Update an existing plan by code
      */
-    public async updatePlan(code: string, request: LagoApi.PlanInput): Promise<LagoApi.Plan> {
+    public async update(code: string, request: LagoApi.PlanInput): Promise<LagoApi.Plan> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `/plans/${code}`),
             method: "PUT",
@@ -135,7 +135,7 @@ export class Client {
     /**
      * Delete a plan
      */
-    public async destroyPlan(code: string): Promise<LagoApi.Plan> {
+    public async destroy(code: string): Promise<LagoApi.Plan> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `/plans/${code}`),
             method: "DELETE",
@@ -172,7 +172,7 @@ export class Client {
     /**
      * Find all plans in certain organisation
      */
-    public async findAllPlans(request: LagoApi.FindAllPlansRequest = {}): Promise<LagoApi.Plans> {
+    public async find(request: LagoApi.FindAllPlansInput = {}): Promise<LagoApi.Plans> {
         const { page, perPage } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {

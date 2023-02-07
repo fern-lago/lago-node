@@ -22,3 +22,4 @@ export * as subscriptions from "./subscriptions";
 export * from "./subscriptions/types";
 export * as wallets from "./wallets";
 export * from "./wallets/types";
+export * from "./addOns/client/requests";

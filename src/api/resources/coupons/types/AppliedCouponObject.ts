@@ -10,7 +10,7 @@ export interface AppliedCouponObject {
     couponCode?: string;
     lagoCustomerId?: string;
     externalCustomerId?: string;
-    status?: LagoApi.Status;
+    status?: LagoApi.CouponStatus;
     amountCents?: number;
     amountCentsRemaining?: number;
     amountCurrency?: string;

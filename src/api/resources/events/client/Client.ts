@@ -22,7 +22,7 @@ export class Client {
     /**
      * Create a new event
      */
-    public async createEvent(request: LagoApi.EventInput): Promise<void> {
+    public async create(request: LagoApi.EventInput): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "/events"),
             method: "POST",
@@ -98,7 +98,7 @@ export class Client {
     /**
      * Return a single event
      */
-    public async findEvent(id: string): Promise<LagoApi.Event> {
+    public async get(id: string): Promise<LagoApi.Event> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `/events/${id}`),
             method: "GET",

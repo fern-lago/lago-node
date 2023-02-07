@@ -3,7 +3,7 @@
  */
 
 export const LagoApiEnvironment = {
-    Production: "https://api.example.com",
+    Production: "https://api.getlago.com/api/v1",
     Sandbox: "https://sandbox.example.com",
 } as const;
 

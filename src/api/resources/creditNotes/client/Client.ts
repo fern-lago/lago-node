@@ -22,7 +22,7 @@ export class Client {
     /**
      * Create a new credit note
      */
-    public async createCreditNote(request: LagoApi.CreditNoteInput): Promise<LagoApi.CreditNote> {
+    public async create(request: LagoApi.CreditNoteInput): Promise<LagoApi.CreditNote> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "/credit_notes"),
             method: "POST",
@@ -60,7 +60,7 @@ export class Client {
     /**
      * Return a single credit note
      */
-    public async findCreditNote(id: string): Promise<LagoApi.CreditNote> {
+    public async get(id: string): Promise<LagoApi.CreditNote> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `/credit_notes/${id}`),
             method: "GET",
@@ -97,7 +97,7 @@ export class Client {
     /**
      * Update an existing credit note
      */
-    public async updateCreditNote(id: string, request: LagoApi.CreditNoteUpdateInput): Promise<LagoApi.CreditNote> {
+    public async update(id: string, request: LagoApi.CreditNoteUpdateInput): Promise<LagoApi.CreditNote> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `/credit_notes/${id}`),
             method: "PUT",
@@ -135,7 +135,7 @@ export class Client {
     /**
      * Download an existing credit note
      */
-    public async downloadCreditNote(id: string): Promise<LagoApi.CreditNote> {
+    public async download(id: string): Promise<LagoApi.CreditNote> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.LagoApiEnvironment.Production,
@@ -215,7 +215,7 @@ export class Client {
     /**
      * Find all credit notes in certain organisation
      */
-    public async findAllCreditNotes(request: LagoApi.FindAllCreditNotesRequest = {}): Promise<LagoApi.CreditNotes> {
+    public async find(request: LagoApi.FindAllCreditNotesInput = {}): Promise<LagoApi.CreditNotes> {
         const { page, perPage, externalCustomerId } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {

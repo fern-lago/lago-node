@@ -22,7 +22,7 @@ export class Client {
     /**
      * Create a new wallet
      */
-    public async createWallet(request: LagoApi.WalletInput): Promise<LagoApi.Wallet> {
+    public async create(request: LagoApi.WalletInput): Promise<LagoApi.Wallet> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "wallets"),
             method: "POST",
@@ -60,7 +60,7 @@ export class Client {
     /**
      * Return a wallet
      */
-    public async findWallet(id: string): Promise<LagoApi.Wallet> {
+    public async get(id: string): Promise<LagoApi.Wallet> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `wallets/${id}`),
             method: "GET",
@@ -97,7 +97,7 @@ export class Client {
     /**
      * Update an existing wallet
      */
-    public async updateWallet(id: string, request: LagoApi.WalletUpdateInput): Promise<LagoApi.Wallet> {
+    public async update(id: string, request: LagoApi.WalletUpdateInput): Promise<LagoApi.Wallet> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `wallets/${id}`),
             method: "PUT",
@@ -135,7 +135,7 @@ export class Client {
     /**
      * Delete a wallet
      */
-    public async destroyWallet(id: string): Promise<LagoApi.Wallet> {
+    public async destroy(id: string): Promise<LagoApi.Wallet> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `wallets/${id}`),
             method: "DELETE",
@@ -172,7 +172,7 @@ export class Client {
     /**
      * Find all wallets for certain customer
      */
-    public async findAllWallets(request: LagoApi.FindAllWalletsRequest): Promise<LagoApi.Wallets> {
+    public async find(request: LagoApi.FindAllWalletsRequest): Promise<LagoApi.Wallets> {
         const { page, perPage, externalCustomerId } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {
@@ -259,7 +259,7 @@ export class Client {
     /**
      * Find all wallet transactions for certain wallet
      */
-    public async findAllWalletTransactions(
+    public async findWalletTransactions(
         id: string,
         request: LagoApi.FindAllWalletTransactionsRequest = {}
     ): Promise<LagoApi.WalletTransactions> {

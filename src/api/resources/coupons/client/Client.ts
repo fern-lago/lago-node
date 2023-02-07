@@ -22,7 +22,7 @@ export class Client {
     /**
      * Create a new coupon
      */
-    public async createCoupon(request: LagoApi.CouponInput): Promise<LagoApi.Coupon> {
+    public async create(request: LagoApi.CouponInput): Promise<LagoApi.Coupon> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "coupons"),
             method: "POST",
@@ -60,7 +60,7 @@ export class Client {
     /**
      * Return a single coupon
      */
-    public async findCoupon(code: string): Promise<LagoApi.Coupon> {
+    public async get(code: string): Promise<LagoApi.Coupon> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `coupons/${code}`),
             method: "GET",
@@ -97,7 +97,7 @@ export class Client {
     /**
      * Update an existing coupon by code
      */
-    public async updateCoupon(code: string, request: LagoApi.CouponInput): Promise<LagoApi.Coupon> {
+    public async update(code: string, request: LagoApi.CouponInput): Promise<LagoApi.Coupon> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `coupons/${code}`),
             method: "PUT",
@@ -135,7 +135,7 @@ export class Client {
     /**
      * Delete a coupon
      */
-    public async destroyCoupon(code: string): Promise<LagoApi.Coupon> {
+    public async destroy(code: string): Promise<LagoApi.Coupon> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `coupons/${code}`),
             method: "DELETE",
@@ -172,7 +172,7 @@ export class Client {
     /**
      * Find all coupons in certain organisation
      */
-    public async findAllCoupons(request: LagoApi.FindAllCouponsRequest = {}): Promise<LagoApi.Coupons> {
+    public async find(request: LagoApi.FindAllCouponsRequest = {}): Promise<LagoApi.Coupons> {
         const { page, perPage } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {
@@ -220,7 +220,7 @@ export class Client {
     /**
      * Apply a coupon to a customer
      */
-    public async applyCoupon(request: LagoApi.AppliedCouponInput): Promise<LagoApi.AppliedCoupon> {
+    public async apply(request: LagoApi.AppliedCouponInput): Promise<LagoApi.AppliedCoupon> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "applied_coupons"),
             method: "POST",
@@ -259,7 +259,7 @@ export class Client {
      * Find all applied coupons
      */
     public async findAllAppliedCoupons(
-        request: LagoApi.FindAllAppliedCouponsRequest = {}
+        request: LagoApi.FindAllAppliedCouponsInput = {}
     ): Promise<LagoApi.AppliedCoupons> {
         const { page, perPage, status, externalCustomerId } = request;
         const _queryParams = new URLSearchParams();

@@ -1,2 +1,2 @@
 export { FindAllCouponsRequest } from "./FindAllCouponsRequest";
-export { FindAllAppliedCouponsRequest } from "./FindAllAppliedCouponsRequest";
+export { FindAllAppliedCouponsInput } from "./FindAllAppliedCouponsInput";

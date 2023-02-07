@@ -15,7 +15,7 @@ export const AppliedCouponObject: core.serialization.ObjectSchema<
     couponCode: core.serialization.property("coupon_code", core.serialization.string().optional()),
     lagoCustomerId: core.serialization.property("lago_customer_id", core.serialization.string().optional()),
     externalCustomerId: core.serialization.property("external_customer_id", core.serialization.string().optional()),
-    status: core.serialization.lazy(async () => (await import("../../..")).Status).optional(),
+    status: core.serialization.lazy(async () => (await import("../../..")).CouponStatus).optional(),
     amountCents: core.serialization.property("amount_cents", core.serialization.number().optional()),
     amountCentsRemaining: core.serialization.property("amount_cents_remaining", core.serialization.number().optional()),
     amountCurrency: core.serialization.property("amount_currency", core.serialization.string().optional()),
@@ -38,7 +38,7 @@ export declare namespace AppliedCouponObject {
         coupon_code?: string | null;
         lago_customer_id?: string | null;
         external_customer_id?: string | null;
-        status?: serializers.Status.Raw | null;
+        status?: serializers.CouponStatus.Raw | null;
         amount_cents?: number | null;
         amount_cents_remaining?: number | null;
         amount_currency?: string | null;

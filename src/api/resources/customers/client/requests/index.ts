@@ -1,2 +1,2 @@
-export { FindCustomerCurrentUsageRequest } from "./FindCustomerCurrentUsageRequest";
-export { FindAllCustomersRequest } from "./FindAllCustomersRequest";
+export { FindCustomerCurrentUsageInput } from "./FindCustomerCurrentUsageInput";
+export { FindAllCustomersInput } from "./FindAllCustomersInput";

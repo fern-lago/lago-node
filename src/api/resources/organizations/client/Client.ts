@@ -22,7 +22,7 @@ export class Client {
     /**
      * Update an existing organization
      */
-    public async updateOrganization(request: LagoApi.OrganizationInput): Promise<LagoApi.Organization> {
+    public async update(request: LagoApi.OrganizationInput): Promise<LagoApi.Organization> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "/organizations"),
             method: "PUT",

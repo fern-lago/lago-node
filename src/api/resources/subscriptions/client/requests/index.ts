@@ -1,1 +1,1 @@
-export { FindAllSubscriptionsRequest } from "./FindAllSubscriptionsRequest";
+export { FindAllSubscriptionsInput } from "./FindAllSubscriptionsInput";

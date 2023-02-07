@@ -4,7 +4,7 @@
 
 import { LagoApi } from "@fern-api/lago";
 
-export interface FindAllAppliedCouponsRequest {
+export interface FindAllAppliedCouponsInput {
     /**
      * Number of page
      */

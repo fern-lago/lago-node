@@ -1,1 +1,1 @@
-export { FindAllPlansRequest } from "./FindAllPlansRequest";
+export { FindAllPlansInput } from "./FindAllPlansInput";

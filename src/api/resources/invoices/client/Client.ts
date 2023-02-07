@@ -22,7 +22,7 @@ export class Client {
     /**
      * Return a single invoice
      */
-    public async findInvoice(id: string): Promise<LagoApi.Invoice> {
+    public async get(id: string): Promise<LagoApi.Invoice> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `/invoices/${id}`),
             method: "GET",
@@ -59,7 +59,7 @@ export class Client {
     /**
      * Update an existing invoice
      */
-    public async updateInvoice(id: string, request: LagoApi.InvoiceInput): Promise<LagoApi.Invoice> {
+    public async update(id: string, request: LagoApi.InvoiceInput): Promise<LagoApi.Invoice> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `/invoices/${id}`),
             method: "PUT",
@@ -97,7 +97,7 @@ export class Client {
     /**
      * Download an existing invoice
      */
-    public async downloadInvoice(id: string): Promise<LagoApi.Invoice> {
+    public async download(id: string): Promise<LagoApi.Invoice> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.LagoApiEnvironment.Production,
@@ -217,7 +217,7 @@ export class Client {
     /**
      * Finalize a draft invoice
      */
-    public async finalizeInvoice(id: string): Promise<LagoApi.Invoice> {
+    public async finalize(id: string): Promise<LagoApi.Invoice> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.LagoApiEnvironment.Production,
@@ -257,7 +257,7 @@ export class Client {
     /**
      * Find all invoices in certain organisation
      */
-    public async findAllInvoices(request: LagoApi.FindAllInvoicesRequest = {}): Promise<LagoApi.Invoices> {
+    public async find(request: LagoApi.FindAllInvoicesRequest = {}): Promise<LagoApi.Invoices> {
         const { page, perPage, externalCustomerId, issuingDateFrom, issuingDateTo, status } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {

@@ -4,6 +4,6 @@
 
 import { LagoApi } from "@fern-api/lago";
 
-export interface AppliedAddOnInput {
+export interface ApplyAddOnInput {
     appliedAddOn?: LagoApi.AppliedAddOnInputObject;
 }

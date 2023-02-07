@@ -22,7 +22,7 @@ export class Client {
     /**
      * Create a new billable metric
      */
-    public async createBillableMetric(request: LagoApi.BillableMetricInput): Promise<LagoApi.BillableMetric> {
+    public async create(request: LagoApi.BillableMetricInput): Promise<LagoApi.BillableMetric> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "/billable_metrics"),
             method: "POST",
@@ -60,7 +60,7 @@ export class Client {
     /**
      * Return a single billable metric
      */
-    public async findBillableMetric(code: string): Promise<LagoApi.BillableMetric> {
+    public async get(code: string): Promise<LagoApi.BillableMetric> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.LagoApiEnvironment.Production,
@@ -100,10 +100,7 @@ export class Client {
     /**
      * Update an existing billable metric by code
      */
-    public async updateBillableMetric(
-        code: string,
-        request: LagoApi.BillableMetricInput
-    ): Promise<LagoApi.BillableMetric> {
+    public async update(code: string, request: LagoApi.BillableMetricInput): Promise<LagoApi.BillableMetric> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.LagoApiEnvironment.Production,
@@ -144,7 +141,7 @@ export class Client {
     /**
      * Delete a billable metric
      */
-    public async destroyBillableMetric(code: string): Promise<LagoApi.BillableMetric> {
+    public async destroy(code: string): Promise<LagoApi.BillableMetric> {
         const _response = await core.fetcher({
             url: urlJoin(
                 this.options.environment ?? environments.LagoApiEnvironment.Production,
@@ -184,9 +181,7 @@ export class Client {
     /**
      * Find all billable metrics in certain organisation
      */
-    public async findAllBillableMetrics(
-        request: LagoApi.FindAllBillableMetrics = {}
-    ): Promise<LagoApi.BillableMetrics> {
+    public async findMetrics(request: LagoApi.FindAllBillableMetricsInput = {}): Promise<LagoApi.BillableMetrics> {
         const { page, perPage } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {
@@ -234,9 +229,9 @@ export class Client {
     /**
      * Find all billable metric groups in certain organisation
      */
-    public async findAllBillableMetricGroups(
+    public async findMetricGroups(
         code: string,
-        request: LagoApi.FindAllBillableMetricGroups = {}
+        request: LagoApi.FindAllBillableMetricGroupsInput = {}
     ): Promise<LagoApi.Groups> {
         const { page, perPage } = request;
         const _queryParams = new URLSearchParams();

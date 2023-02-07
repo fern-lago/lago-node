@@ -22,7 +22,7 @@ export class Client {
     /**
      * Create a new add-on
      */
-    public async createAddOn(request: LagoApi.AddOnInput): Promise<LagoApi.AddOn> {
+    public async create(request: LagoApi.AddOnInput): Promise<LagoApi.AddOn> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "add_ons"),
             method: "POST",
@@ -60,7 +60,7 @@ export class Client {
     /**
      * Return a single add-on
      */
-    public async findAddOn(code: string): Promise<LagoApi.AddOn> {
+    public async get(code: string): Promise<LagoApi.AddOn> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `add_ons/${code}`),
             method: "GET",
@@ -97,7 +97,7 @@ export class Client {
     /**
      * Update an existing add-on by code
      */
-    public async updateAddOn(code: string, request: LagoApi.AddOnInput): Promise<LagoApi.AddOn> {
+    public async update(code: string, request: LagoApi.AddOnInput): Promise<LagoApi.AddOn> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `add_ons/${code}`),
             method: "PUT",
@@ -135,7 +135,7 @@ export class Client {
     /**
      * Delete an add-on
      */
-    public async destroyAddOn(code: string): Promise<LagoApi.AddOn> {
+    public async destroy(code: string): Promise<LagoApi.AddOn> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, `add_ons/${code}`),
             method: "DELETE",
@@ -172,7 +172,7 @@ export class Client {
     /**
      * Find all add-ons in certain organisation
      */
-    public async findAllAddOns(request: LagoApi.FindAllAddOnsRequest = {}): Promise<LagoApi.AddOns> {
+    public async find(request: LagoApi.FindAllAddOnsInput = {}): Promise<LagoApi.AddOns> {
         const { page, perPage } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {
@@ -220,14 +220,14 @@ export class Client {
     /**
      * Apply an add-on to a customer
      */
-    public async applyAddOn(request: LagoApi.AppliedAddOnInput): Promise<LagoApi.AppliedAddOn> {
+    public async apply(request: LagoApi.ApplyAddOnInput = {}): Promise<LagoApi.AppliedAddOn> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.LagoApiEnvironment.Production, "applied_add_ons"),
             method: "POST",
             headers: {
                 Authorization: core.BearerToken.toAuthorizationHeader(await core.Supplier.get(this.options.token)),
             },
-            body: await serializers.AppliedAddOnInput.json(request),
+            body: await serializers.ApplyAddOnInput.json(request),
         });
         if (_response.ok) {
             return await serializers.AppliedAddOn.parse(_response.body as serializers.AppliedAddOn.Raw);

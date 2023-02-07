@@ -1,1 +1,1 @@
-export { FindAllCreditNotesRequest } from "./FindAllCreditNotesRequest";
+export { FindAllCreditNotesInput } from "./FindAllCreditNotesInput";

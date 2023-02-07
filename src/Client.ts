@@ -15,7 +15,6 @@ import { Client as OrganizationsClient } from "./api/resources/organizations/cli
 import { Client as PlansClient } from "./api/resources/plans/client/Client";
 import { Client as SubscriptionsClient } from "./api/resources/subscriptions/client/Client";
 import { Client as WalletsClient } from "./api/resources/wallets/client/Client";
-import { Client as WebhooksClient } from "./api/resources/webhooks/client/Client";
 
 export declare namespace LagoApiClient {
     interface Options {
@@ -91,11 +90,5 @@ export class LagoApiClient {
 
     public get wallets(): WalletsClient {
         return (this.#wallets ??= new WalletsClient(this.options));
-    }
-
-    #webhooks: WebhooksClient | undefined;
-
-    public get webhooks(): WebhooksClient {
-        return (this.#webhooks ??= new WebhooksClient(this.options));
     }
 }
