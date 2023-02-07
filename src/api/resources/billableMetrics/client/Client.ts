@@ -179,9 +179,9 @@ export class Client {
     }
 
     /**
-     * Find all billable metrics in certain organisation
+     * Get all billable metrics in certain organisation
      */
-    public async findMetrics(request: LagoApi.FindAllBillableMetricsInput = {}): Promise<LagoApi.BillableMetrics> {
+    public async getAll(request: LagoApi.FindAllBillableMetricsInput = {}): Promise<LagoApi.BillableMetrics> {
         const { page, perPage } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {

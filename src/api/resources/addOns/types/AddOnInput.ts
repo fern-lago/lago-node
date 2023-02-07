@@ -4,6 +4,18 @@
 
 import { LagoApi } from "@fern-api/lago";
 
+/**
+ * @example
+ *     {
+ *         addOn: {
+ *             name: "add_on_name",
+ *             code: "add_on_code",
+ *             amountCents: 5000,
+ *             amountCurrency: "USD",
+ *             description: "desc"
+ *         }
+ *     }
+ */
 export interface AddOnInput {
     addOn?: LagoApi.AddOnInputObject;
 }

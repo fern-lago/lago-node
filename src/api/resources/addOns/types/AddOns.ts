@@ -4,6 +4,20 @@
 
 import { LagoApi } from "@fern-api/lago";
 
+/**
+ * @example
+ *     {
+ *         addOns: [{
+ *                 lagoId: "b7ab2926-1de8-4428-9bcd-779314ac129b",
+ *                 name: "add_on_name",
+ *                 code: "add_on_code",
+ *                 amountCents: 5000,
+ *                 amountCurrency: "USD",
+ *                 description: "description",
+ *                 createdAt: "2022-04-29T08:59:51Z"
+ *             }]
+ *     }
+ */
 export interface AddOns {
     addOns?: LagoApi.AddOnObject[];
 }

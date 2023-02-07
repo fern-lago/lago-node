@@ -170,7 +170,7 @@ export class Client {
     }
 
     /**
-     * Find all add-ons in certain organisation
+     * Get all add-ons in certain organisation
      */
     public async find(request: LagoApi.FindAllAddOnsInput = {}): Promise<LagoApi.AddOns> {
         const { page, perPage } = request;

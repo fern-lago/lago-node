@@ -4,6 +4,20 @@
 
 import { LagoApi } from "@fern-api/lago";
 
+/**
+ * @example
+ *     {
+ *         name: "bm_name",
+ *         code: "bm_code",
+ *         description: "description",
+ *         aggregationType: LagoApi.AggregationType.SumAgg,
+ *         fieldName: "amount_sum",
+ *         group: {
+ *             key: "country",
+ *             values: ["france", "italy", "spain"]
+ *         }
+ *     }
+ */
 export interface BillableMetricInputObject {
     name?: string;
     code?: string;
