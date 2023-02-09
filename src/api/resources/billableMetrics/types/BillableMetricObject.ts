@@ -21,6 +21,7 @@ import { LagoApi } from "@fern-api/lago";
  */
 export interface BillableMetricObject {
     lagoId?: string;
+    /** The name of the billable metric. */
     name?: string;
     code?: string;
     description?: string;
